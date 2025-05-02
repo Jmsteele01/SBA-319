@@ -23,6 +23,27 @@ router.get('/', async (req, res) => {
     res.json(posts);
   });
 
+    //Update 
+    router.put('/:id', async (req, res) => {
+      try {
+        const { text } = req.body;
+    
+        const updatedPost = await Post.findByIdAndUpdate(
+          req.params.id,
+          { text },
+          { new: true, runValidators: true }
+        );
+    
+        if (!updatedPost) {
+          return res.status(404).json({ message: 'Post not found' });
+        }
+    
+        res.json(updatedPost);
+      } catch (err) {
+        res.status(400).json({ error: err.message });
+      }
+    });
+
     // Delete
 router.delete('/:id', async (req, res) => {
   // Specify Action
