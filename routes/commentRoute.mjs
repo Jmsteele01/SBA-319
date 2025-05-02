@@ -23,6 +23,13 @@ router.get('/', async (req, res) => {
     res.json(comments);
   });
 
+    // Delete
+router.delete('/:id', async (req, res) => {
+    // Specify Action
+    const deletedComment = await Comment.findByIdAndDelete(req.params.id);
   
+    // return result
+    res.json(deletedComment); // return deleted itm. optional. can return delete message
+  });
 
   export default router;

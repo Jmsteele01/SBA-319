@@ -23,6 +23,13 @@ router.get('/', async (req, res) => {
     res.json(posts);
   });
 
-  
+    // Delete
+router.delete('/:id', async (req, res) => {
+  // Specify Action
+  const deletedPost= await Post.findByIdAndDelete(req.params.id);
+
+  // return result
+  res.json(deletedPost); // return deleted itm. optional. can return delete message
+});
 
   export default router;
