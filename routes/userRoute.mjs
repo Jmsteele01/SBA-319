@@ -23,6 +23,28 @@ router.get('/', async (req, res) => {
     res.json(users);
   });
 
+  //Update 
+  router.put('/:id', async (req, res) => {
+    try {
+      const { username, email } = req.body;
+  
+      const updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        { username, email },
+        { new: true, runValidators: true }
+      );
+  
+      if (!updatedUser) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      res.json(updatedUser);
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  });
+  
+
   // Delete
 router.delete('/:id', async (req, res) => {
   // Specify Action

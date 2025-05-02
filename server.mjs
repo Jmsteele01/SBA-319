@@ -21,7 +21,7 @@ app.use(express.json());
 
 //middleware
 app.use(express.json());
-connectDB();
+
 
 //starting test data
 // const testUsers = [
@@ -61,6 +61,16 @@ res.status(500).json({msg: 'Server Error'});
 });
 
 //listeners
-app.listen(PORT, ()=>{
-    console.log(`Server for 319 is running on PORT: ${PORT}`)
-});
+const startServer = async () => {
+  try {
+    await connectDB();
+    app.listen(PORT, () => {
+      console.log(`Server for 319 is running on PORT: ${PORT}`);
+    });
+  } catch (err) {
+    console.error("Failed to connect!", err);
+    process.exit(1);
+  }
+};
+
+startServer();
