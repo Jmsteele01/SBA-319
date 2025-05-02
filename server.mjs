@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.json());
 
 
-//starting test data
+// starting test data
 // const testUsers = [
 //   { username: 'alice', email: 'alice@example.com', password: 'password123' },
 //   { username: 'bob', email: 'bob@example.com', password: 'securepass' },
