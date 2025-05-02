@@ -23,6 +23,13 @@ router.get('/', async (req, res) => {
     res.json(users);
   });
 
-  
+  // Delete
+router.delete('/:id', async (req, res) => {
+  // Specify Action
+  const deletedUser = await User.findByIdAndDelete(req.params.id);
+
+  // return result
+  res.json(deletedUser); // return deleted itm. optional. can return delete message
+});
 
   export default router;

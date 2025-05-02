@@ -23,6 +23,7 @@ app.use(express.json());
 app.use(express.json());
 connectDB();
 
+//starting test data
 // const testUsers = [
 //   { username: 'alice', email: 'alice@example.com', password: 'password123' },
 //   { username: 'bob', email: 'bob@example.com', password: 'securepass' },
@@ -33,17 +34,17 @@ connectDB();
 // await User.insertMany(testUsers);
 // console.log('Test users ready.');
 
-const testPosts = [
-  { text: 'This is a post!'}
-];
-await Post.insertMany(testPosts);
-console.log('Test posts ready.');
+// const testPosts = [
+//   { text: 'This is a post!'}
+// ];
+// await Post.insertMany(testPosts);
+// console.log('Test posts ready.');
 
-const testComments = [
-  { text: "This is a comment!" }
-];
-await Comment.insertMany(testComments);
-console.log('Test comments ready.');
+// const testComments = [
+//   { text: "This is a comment!" }
+// ];
+// await Comment.insertMany(testComments);
+// console.log('Test comments ready.');
 
 
 //routes

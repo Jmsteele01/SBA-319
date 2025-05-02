@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import User from './user.mjs';
 
 const postSchema = new mongoose.Schema({
   text: {
@@ -14,16 +15,11 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  postID: {
-    type: String,
-    required: false, //make true once default set
-    unique: false //make true once default set
-  },
-//   user: {
-//     type: User, 
-//     required: true,
-//     unique: true
-//   }
+  user: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User',
+    required: true,
+  }
 });
 
 const Post = mongoose.model('Post', postSchema);
